@@ -23,7 +23,7 @@ export default function InputCard() {
       dayOfYear = parseInt(input.substring(2, 5));
     }
 
-     // new nic
+    // new nic
     else if (/^\d{12}$/.test(input)) {
       year = parseInt(input.substring(0, 4));
       dayOfYear = parseInt(input.substring(4, 7));
@@ -34,63 +34,69 @@ export default function InputCard() {
       return;
     }
 
+    // birthday generate
+    const date = new Date(year, 0);
+    date.setDate(dayOfYear);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
 
 
 
 
-  return (
-    <Card sx={{
-      maxWidth: 500,
-      overflow: 'hidden',
-      borderRadius: '20px',
-      marginLeft: '500px',
-      marginTop: '100px'
-    }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          image="src\assets\istockphoto-2156936031-612x612.jpg"
-          alt="green iguana"
-          sx={{
-            width: '100%',
-            height: '300px',
-            objectFit: 'cover',
-            borderRadius: '20px'
-          }}
-        />
-        <CardContent>
-          <Box sx={{ width: 500, maxWidth: '100%' }}>
-            <TextField
-              fullWidth
-              value={nicNumber}
-              onChange={(e) => setNicNumber(e.target.value)}
-              label="Enter NIC No"
-              variant="outlined"
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '10px',
-                },
-              }}
-            />
-          </Box>
-          <button onClick={handleSubmit} className="submitButton">Submit</button>
 
-          <div className="info-box">
-            <div className="info-label">NIC No</div>
-            <div className="info-value">{nic}</div>
-          </div>
+    return (
+      <Card sx={{
+        maxWidth: 500,
+        overflow: 'hidden',
+        borderRadius: '20px',
+        marginLeft: '500px',
+        marginTop: '100px'
+      }}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            image="src\assets\istockphoto-2156936031-612x612.jpg"
+            alt="green iguana"
+            sx={{
+              width: '100%',
+              height: '300px',
+              objectFit: 'cover',
+              borderRadius: '20px'
+            }}
+          />
+          <CardContent>
+            <Box sx={{ width: 500, maxWidth: '100%' }}>
+              <TextField
+                fullWidth
+                value={nicNumber}
+                onChange={(e) => setNicNumber(e.target.value)}
+                label="Enter NIC No"
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '10px',
+                  },
+                }}
+              />
+            </Box>
+            <button onClick={handleSubmit} className="submitButton">Submit</button>
 
-          <div className="info-box">
-            <div className="info-label">Birthday</div>
-            <div className="info-value">{birthday}</div>
-          </div>
+            <div className="info-box">
+              <div className="info-label">NIC No</div>
+              <div className="info-value">{nic}</div>
+            </div>
 
-          <div className="info-box">
-            <div className="info-label">Gender</div>
-            <div className="info-value">{gender}</div>
-          </div>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  )
-}
+            <div className="info-box">
+              <div className="info-label">Birthday</div>
+              <div className="info-value">{birthday}</div>
+            </div>
+
+            <div className="info-box">
+              <div className="info-label">Gender</div>
+              <div className="info-value">{gender}</div>
+            </div>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    )
+  }
