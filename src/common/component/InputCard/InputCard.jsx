@@ -3,8 +3,12 @@ import './InputCard.css'
 
 export default function InputCard() {
   return (
-    <div>
-      
-    </div>
+   <Card sx={{
+        maxWidth: 500,
+        overflow: 'hidden',
+        borderRadius: '20px',
+        marginLeft: '500px',
+        marginTop: '100px'
+      }}></Card>
   )
 }
