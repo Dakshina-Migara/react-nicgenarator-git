@@ -22,6 +22,22 @@ export default function InputCard() {
             borderRadius: '20px'
           }}
         />
+        <CardContent>
+          <Box sx={{ width: 500, maxWidth: '100%' }}>
+            <TextField
+              fullWidth
+              value={nicNumber}
+              onChange={(e) => setNicNumber(e.target.value)}
+              label="Enter NIC No"
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '10px',
+                },
+              }}
+            />
+          </Box>
+        </CardContent>
       </CardActionArea>
     </Card>
   )
