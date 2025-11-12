@@ -23,6 +23,18 @@ export default function InputCard() {
       dayOfYear = parseInt(input.substring(2, 5));
     }
 
+     // new nic
+    else if (/^\d{12}$/.test(input)) {
+      year = parseInt(input.substring(0, 4));
+      dayOfYear = parseInt(input.substring(4, 7));
+    } else {
+      setNic('');
+      setBirthday('');
+      setGender('');
+      return;
+    }
+
+
 
 
 
