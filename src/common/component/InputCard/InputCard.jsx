@@ -37,6 +37,22 @@ export default function InputCard() {
               }}
             />
           </Box>
+          <button onClick={handleSubmit} className="submitButton">Submit</button>
+
+          <div className="info-box">
+            <div className="info-label">NIC No</div>
+            <div className="info-value">{nic}</div>
+          </div>
+
+          <div className="info-box">
+            <div className="info-label">Birthday</div>
+            <div className="info-value">{birthday}</div>
+          </div>
+
+          <div className="info-box">
+            <div className="info-label">Gender</div>
+            <div className="info-value">{gender}</div>
+          </div>
         </CardContent>
       </CardActionArea>
     </Card>
