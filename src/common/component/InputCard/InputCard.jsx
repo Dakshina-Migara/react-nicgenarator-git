@@ -1,5 +1,11 @@
-import React from 'react'
 import './InputCard.css'
+import React, { useState } from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import CardActionArea from '@mui/material/CardActionArea';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export default function InputCard() {
   return (
