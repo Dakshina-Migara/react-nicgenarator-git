@@ -3,12 +3,26 @@ import './InputCard.css'
 
 export default function InputCard() {
   return (
-   <Card sx={{
-        maxWidth: 500,
-        overflow: 'hidden',
-        borderRadius: '20px',
-        marginLeft: '500px',
-        marginTop: '100px'
-      }}></Card>
+    <Card sx={{
+      maxWidth: 500,
+      overflow: 'hidden',
+      borderRadius: '20px',
+      marginLeft: '500px',
+      marginTop: '100px'
+    }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          image="src\assets\istockphoto-2156936031-612x612.jpg"
+          alt="green iguana"
+          sx={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+            borderRadius: '20px'
+          }}
+        />
+      </CardActionArea>
+    </Card>
   )
 }
