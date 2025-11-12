@@ -8,6 +8,24 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function InputCard() {
+  const [nicNumber, setNicNumber] = useState('');
+  const [nic, setNic] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [gender, setGender] = useState('');
+
+  const handleSubmit = () => {
+    const input = nicNumber.trim().toUpperCase();
+    let year, dayOfYear, genderValue;
+
+    //old nic
+    if (/^\d{9}[VX]$/.test(input)) {
+      year = 1900 + parseInt(input.substring(0, 2));
+      dayOfYear = parseInt(input.substring(2, 5));
+    }
+
+
+
+
   return (
     <Card sx={{
       maxWidth: 500,
