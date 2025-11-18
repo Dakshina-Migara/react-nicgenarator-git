@@ -7,6 +7,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import lankaNic from 'lanka-nic';
+import { Link } from 'react-router-dom';
 
 export default function InputCard() {
 
@@ -75,6 +76,12 @@ export default function InputCard() {
             <div className="info-label">Gender</div>
             <div className="info-value">{result.gender}</div>
           </div>
+
+          <Link to={'./Home'}>
+            <button className="submitButton1">Go to Home Page</button>
+          </Link>
+
+
         </CardContent>
       </CardActionArea>
     </Card>
