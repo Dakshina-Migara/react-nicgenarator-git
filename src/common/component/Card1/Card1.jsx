@@ -19,6 +19,7 @@ export default function Card1({ children }) {
                     />
                 </CardActionArea>
             </Card>
+        
         </div>
     )
 }

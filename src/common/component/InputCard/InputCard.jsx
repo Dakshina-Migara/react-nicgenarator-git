@@ -6,51 +6,22 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import lankaNic from 'lanka-nic';
+import { Link } from 'react-router-dom';
 
 export default function InputCard() {
-  const [nicNumber, setNicNumber] = useState('');
-  const [nic, setNic] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [gender, setGender] = useState('');
+
+  const [inputNic, setInputNic] = useState('');
+  const [result, setResult] = useState({});
 
   const handleSubmit = () => {
-    const input = nicNumber.trim().toUpperCase();
-    let year, dayOfYear, genderValue;
-
-    //old nic
-    if (/^\d{9}[VX]$/.test(input)) {
-      year = 1900 + parseInt(input.substring(0, 2));
-      dayOfYear = parseInt(input.substring(2, 5));
+    let nic1 = inputNic;
+    if (inputNic.length > 10) {
+      nic1 = inputNic.slice(2, 12);
     }
-
-    // new nic
-    else if (/^\d{12}$/.test(input)) {
-      year = parseInt(input.substring(0, 4));
-      dayOfYear = parseInt(input.substring(4, 7));
-    } else {
-      setNic('');
-      setBirthday('');
-      setGender('');
-      return;
-    }
-
-    // birthday generate
-    const date = new Date(year, 0);
-    date.setDate(dayOfYear);
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-
-    // gender generate
-    if (dayOfYear > 500) {
-      genderValue = 'Female';
-      dayOfYear = dayOfYear - 500;
-    } else {
-      genderValue = 'Male';
-    }
-
-    setNic(input);
-    setBirthday(`${year}-${month}-${day}`);
-    setGender(genderValue);
+    const result = lankaNic.getInfoFromNIC(nic1);
+    result.dateOfBirth = result.dateOfBirth.toISOString().split("T")[0];
+    setResult(result);
   };
 
   return (
@@ -62,6 +33,7 @@ export default function InputCard() {
       marginTop: '100px'
     }}>
       <CardActionArea>
+
         <CardMedia
           component="img"
           image="src\assets\istockphoto-2156936031-612x612.jpg"
@@ -77,8 +49,8 @@ export default function InputCard() {
           <Box sx={{ width: 500, maxWidth: '100%' }}>
             <TextField
               fullWidth
-              value={nicNumber}
-              onChange={(e) => setNicNumber(e.target.value)}
+              value={inputNic}
+              onChange={(e) => setInputNic(e.target.value)}
               label="Enter NIC No"
               variant="outlined"
               sx={{
@@ -92,18 +64,24 @@ export default function InputCard() {
 
           <div className="info-box">
             <div className="info-label">NIC No</div>
-            <div className="info-value">{nic}</div>
+            <div className="info-value">{inputNic}</div>
           </div>
 
           <div className="info-box">
             <div className="info-label">Birthday</div>
-            <div className="info-value">{birthday}</div>
+            <div className="info-value">{result.dateOfBirth}</div>
           </div>
 
           <div className="info-box">
             <div className="info-label">Gender</div>
-            <div className="info-value">{gender}</div>
+            <div className="info-value">{result.gender}</div>
           </div>
+
+          <Link to={'./Home'}>
+            <button className="submitButton1">Go to Home Page</button>
+          </Link>
+
+
         </CardContent>
       </CardActionArea>
     </Card>
